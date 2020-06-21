@@ -3,9 +3,9 @@
  */
 package com.example.springbootmongodb;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,54 +19,28 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ToDoController {
-
-	static List<ToDo> data;
 	
-	static {
-		ToDo todo1 = new ToDo();
-		
-		todo1.setId(1);
-		todo1.setName("name1");
-		todo1.setDescription("Desciption of todo");
-		
-		
-		ToDo todo2 = new ToDo();
-		
-		todo2.setId(2);
-		todo2.setName("name2");
-		todo2.setDescription("Desciption of todo");
-		
-		 data = new ArrayList<>(java.util.Arrays.asList(todo1,todo2));
-	
-	}
+	@Autowired
+	ToDoService toDoSerivce;
 	
 	@GetMapping(value = "/{id}")
-	public ToDo getToDo(@PathVariable int id) {
-		
-		ToDo todo = new ToDo();
-		
-		todo.setId(id);
-		todo.setName("name");
-		todo.setDescription("Desciption of todo");
-		
-		return todo ;
+	public ToDo getToDoById(@PathVariable int id) {
+		return toDoSerivce.getToDoById(id);
 	}
 	
 	@GetMapping(value = {"/", ""})
-	public List<ToDo> getAll() {
-		return data;
+	public List<ToDo> getAllToDo() {
+		return toDoSerivce.getAllToDo();
 	}
 	
 	
 	@PostMapping(value= {"/", ""})
 	public ToDo addTodo(@RequestBody ToDo toDo) {
-		data.add(toDo);
-		return toDo;
+		return toDoSerivce.addTodo(toDo);
 	}
 	
-	@DeleteMapping(value= {"/{id}"})
-	public List<ToDo> removeTodoById(@PathVariable int id) {
-		data.remove(id);
-		return data;
+	@DeleteMapping(value= {"/", ""})
+	public void removeTodoById(@RequestBody ToDo toDo) {
+		toDoSerivce.removeTodoById(toDo.getId());
 	}
 }

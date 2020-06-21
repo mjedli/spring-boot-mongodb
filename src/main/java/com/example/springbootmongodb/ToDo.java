@@ -3,13 +3,18 @@
  */
 package com.example.springbootmongodb;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author mjedli
  *
  */
+@Document
 public class ToDo {
 	
-	private int id;
+	@Id
+	private String id;
 	private String name;
 	private String description;
 	/**
@@ -25,18 +30,6 @@ public class ToDo {
 		this.name = name;
 	}
 	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	/**
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -47,6 +40,12 @@ public class ToDo {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
