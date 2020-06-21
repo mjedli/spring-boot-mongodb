@@ -6,8 +6,15 @@ package com.example.springbootmongodb;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -49,9 +56,16 @@ public class ToDoController {
 		return todo ;
 	}
 	
-	@GetMapping(value = "/")
+	@GetMapping(value = {"/", ""})
 	public List<ToDo> getAll() {
 		return data;
+	}
+	
+	
+	@PostMapping(value= {"/", ""})
+	public ToDo addTodo(@RequestBody ToDo toDo) {
+		data.add(toDo);
+		return toDo;
 	}
 	
 }
