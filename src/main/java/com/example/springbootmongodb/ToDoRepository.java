@@ -12,11 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ToDoRepository extends MongoRepository<ToDo, String> {
-
-	ToDo getToDoById(int id);
-
-	ToDo findById(int id);
-
-	void deleteById(String id);
 	
 }

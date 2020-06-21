@@ -4,6 +4,7 @@
 package com.example.springbootmongodb;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class ToDoService {
 	@Autowired
 	ToDoRepository repository;
 	
-	public ToDo getToDoById(int id) {
+	public Optional<ToDo> getToDoById(String id) {
 		return repository.findById(id);
 	}
 

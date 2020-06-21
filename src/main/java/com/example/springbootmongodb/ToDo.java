@@ -5,6 +5,7 @@ package com.example.springbootmongodb;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.NonNull;
 
 /**
  * @author mjedli
@@ -14,6 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ToDo {
 	
 	@Id
+	@NonNull
 	private String id;
 	private String name;
 	private String description;

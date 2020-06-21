@@ -4,6 +4,7 @@
 package com.example.springbootmongodb;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,7 @@ public class ToDoController {
 	ToDoService toDoSerivce;
 	
 	@GetMapping(value = "/{id}")
-	public ToDo getToDoById(@PathVariable int id) {
+	public Optional<ToDo> getToDoById(@PathVariable String id) {
 		return toDoSerivce.getToDoById(id);
 	}
 	
@@ -39,8 +40,8 @@ public class ToDoController {
 		return toDoSerivce.addTodo(toDo);
 	}
 	
-	@DeleteMapping(value= {"/", ""})
-	public void removeTodoById(@RequestBody ToDo toDo) {
-		toDoSerivce.removeTodoById(toDo.getId());
+	@DeleteMapping(value= {"/id"})
+	public void removeTodoById(@PathVariable String id) {
+		toDoSerivce.removeTodoById(id);
 	}
 }
