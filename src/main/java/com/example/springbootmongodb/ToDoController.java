@@ -35,7 +35,6 @@ public class ToDoController {
 		return toDoSerivce.getAllToDo();
 	}
 	
-	
 	@PostMapping(value= {"/", ""})
 	public ToDo addTodo(@RequestBody ToDo toDo) {
 		return toDoSerivce.addTodo(toDo);
