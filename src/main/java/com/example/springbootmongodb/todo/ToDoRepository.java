@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.springbootmongodb;
+package com.example.springbootmongodb.todo;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

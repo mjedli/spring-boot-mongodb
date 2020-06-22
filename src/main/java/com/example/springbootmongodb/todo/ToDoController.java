@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.springbootmongodb;
+package com.example.springbootmongodb.todo;
 
 import java.util.List;
 import java.util.Optional;
