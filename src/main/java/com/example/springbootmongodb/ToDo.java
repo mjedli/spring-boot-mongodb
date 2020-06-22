@@ -56,7 +56,4 @@ public class ToDo {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	
-	
 }
