@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,8 +41,8 @@ public class ToDoController {
 		return toDoSerivce.addTodo(toDo);
 	}
 	
-	@DeleteMapping(value= {"/id"})
-	public void removeTodoById(@PathVariable String id) {
+	@DeleteMapping(value= "/{id}")
+	public void removeTodoById(@PathVariable @Validated String id) {
 		toDoSerivce.removeTodoById(id);
 	}
 }

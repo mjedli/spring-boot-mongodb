@@ -24,7 +24,7 @@ public class ToDoService {
 	}
 
 	public ToDo addTodo(ToDo toDo) {
-		return repository.save(toDo);
+		return repository.insert(toDo);
 	}
 
 	public List<ToDo> getAllToDo() {
