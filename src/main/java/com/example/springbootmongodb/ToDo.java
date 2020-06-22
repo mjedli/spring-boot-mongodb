@@ -19,6 +19,7 @@ public class ToDo {
 	private String id;
 	private String name;
 	private String description;
+	
 	/**
 	 * @return the name
 	 */
@@ -43,12 +44,19 @@ public class ToDo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	/**
+	 * @return the id
+	 */
 	public String getId() {
 		return id;
 	}
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	
 	
 }
