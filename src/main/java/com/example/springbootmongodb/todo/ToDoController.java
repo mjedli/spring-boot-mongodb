@@ -25,9 +25,14 @@ public class ToDoController {
 	@Autowired
 	ToDoService toDoSerivce;
 	
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/id/{id}")
 	public Optional<ToDo> getToDoById(@PathVariable String id) {
 		return toDoSerivce.getToDoById(id);
+	}
+	
+	@GetMapping(value = "/name/{name}")
+	public List<ToDo> getToDoByName(@PathVariable String name) {
+		return toDoSerivce.findByName(name);
 	}
 	
 	@GetMapping(value = {"/", ""})
