@@ -26,8 +26,9 @@ public class ToDoRepository implements ToDoRepositoryInt {
 	private MongoOperations mongoOperations;
 	
 	public List<ToDo> findByName(String name) {
+		
 		Assert.notNull(name, "The given name must not be null!");
-
+		
 		return Optional.ofNullable(
 				mongoOperations.find(Query.query(Criteria.where("name").is(name)), ToDo.class)).get();
 	}
