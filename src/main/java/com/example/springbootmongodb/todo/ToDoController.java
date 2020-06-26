@@ -45,6 +45,11 @@ public class ToDoController {
 		return toDoSerivce.getAllToDoSort();
 	}
 	
+	@GetMapping(value = {"/pagebale/", "/pagebale"})
+	public List<ToDo> getAllToDoPagebale() {
+		return toDoSerivce.getAllToDoPagebale().getContent();
+	}
+	
 	@PostMapping(value= {"/", ""})
 	public ToDo addTodo(@RequestBody ToDo toDo) {
 		return toDoSerivce.addTodo(toDo);
