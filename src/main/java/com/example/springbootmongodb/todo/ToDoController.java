@@ -49,4 +49,9 @@ public class ToDoController {
 	public void removeTodoById(@PathVariable @Validated String id) {
 		toDoSerivce.removeTodoById(id);
 	}
+	
+	@GetMapping(value = "/count")
+	public long count() {
+		return toDoSerivce.count();
+	}
 }

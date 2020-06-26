@@ -44,4 +44,8 @@ public class ToDoService {
 	public void removeTodoById(String id) {
 		repository.deleteById(id);
 	}
+	
+	public long count() {
+		return repository.count();
+	}
 }
