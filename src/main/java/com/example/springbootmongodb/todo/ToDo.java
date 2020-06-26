@@ -4,6 +4,7 @@
 package com.example.springbootmongodb.todo;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.NonNull;
 
@@ -18,6 +19,7 @@ public class ToDo {
 	@NonNull
 	private String id;
 	
+	@Indexed
 	private String name;
 	private String description;
 	
