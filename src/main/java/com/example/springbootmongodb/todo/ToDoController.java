@@ -40,6 +40,11 @@ public class ToDoController {
 		return toDoSerivce.getAllToDo();
 	}
 	
+	@GetMapping(value = {"/sort/", "/sort"})
+	public List<ToDo> getAllToDoSort() {
+		return toDoSerivce.getAllToDoSort();
+	}
+	
 	@PostMapping(value= {"/", ""})
 	public ToDo addTodo(@RequestBody ToDo toDo) {
 		return toDoSerivce.addTodo(toDo);
