@@ -6,6 +6,9 @@ package com.example.springbootmongodb.todo;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -31,6 +34,8 @@ public class ToDoController {
 	@Autowired
 	ToDoService toDoSerivce;
 	
+	private static final Logger log = LoggerFactory.getLogger(ToDoController.class);
+	
 	@GetMapping(value = "/id/{id}")
 	public Optional<ToDo> getToDoById(@PathVariable String id) {
 		return toDoSerivce.getToDoById(id);
@@ -43,6 +48,7 @@ public class ToDoController {
 	
 	@GetMapping(value = {"/", ""})
 	public List<ToDo> getAllToDo() {
+		log.info("Get ALL TODO");
 		return toDoSerivce.getAllToDo();
 	}
 	
