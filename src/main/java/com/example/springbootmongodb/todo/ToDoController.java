@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -53,6 +56,17 @@ public class ToDoController {
 	public List<ToDo> getAllToDoPagebale() {
 		final Pageable pageableRequest = PageRequest.of(0, 2);
 		return toDoSerivce.getAllToDoPagebale(pageableRequest).getContent();
+	}
+
+	@PostMapping(value= {"isExist/", "isExist"})
+	public Boolean isTodoExist(@RequestBody ToDo toDo) {
+		
+		ExampleMatcher NAME_MATCHER = ExampleMatcher.matching()
+	            .withMatcher("name", GenericPropertyMatchers.ignoreCase());
+		
+		Example<ToDo> example = Example.<ToDo>of(toDo, NAME_MATCHER);
+
+		return toDoSerivce.isTodoExist(example);
 	}
 	
 	@PostMapping(value= {"/", ""})
