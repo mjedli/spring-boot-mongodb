@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author mjedli
@@ -46,13 +45,11 @@ public class ToDoService {
 		return repository.findAll();
 	}
 	
-	public List<ToDo> getAllToDoSort() {
-		Sort sort = Sort.by(Sort.DEFAULT_DIRECTION, "name");
+	public List<ToDo> getAllToDoSort(Sort sort) {
 		return repository.findAll(sort);
 	}
 
-	public Page<ToDo> getAllToDoPagebale() {
-		final Pageable pageableRequest = PageRequest.of(0, 2);
+	public Page<ToDo> getAllToDoPagebale(Pageable pageableRequest) {
 		return repository.findAll(pageableRequest);
 	}
 
